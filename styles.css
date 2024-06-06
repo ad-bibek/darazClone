@@ -1,0 +1,164 @@
+:root {
+    --primary-color: #f85606;
+    --secondary-color: #888cf5;
+    --white: #ffffff;
+    --gray: #f5f5f5;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--gray);
+}
+
+header .top-bar {
+    background-color: var(--primary-color);
+    padding: 10px;
+    text-align: center;
+}
+
+header .top-bar a {
+    color: var(--white);
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+header .main-header {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+header .main-header .logo img {
+    height: 50px;
+}
+
+header .main-header .search-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+}
+
+header .main-header .search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+header .main-header .search-bar button {
+    background-color: var(--white);
+    border: none;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+header .main-header .search-bar button img {
+    width: 20px;
+}
+
+header .main-header .account-nav a {
+    color: var(--white);
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+header .main-header .account-nav a img {
+    width: 20px;
+}
+
+nav.categories {
+    background-color: var(--white);
+    padding: 20px;
+}
+
+nav.categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav.categories ul li {
+    padding: 10px 0;
+}
+
+nav.categories ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-slider {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.sale-banner img {
+    width: 100%;
+    height: auto;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}

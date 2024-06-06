@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daraz Template</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <a href="#">Become a Seller</a>
+            <a href="#">Payments & Recharge</a>
+            <a href="#">Help & Support</a>
+            <a href="#">Daraz Logistics Partner</a>
+        </div>
+        <div class="main-header">
+            <div class="logo">
+                <a href="/"><img src="assets/daraz.png" alt="Daraz Logo"></a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search in Daraz">
+                <button><img src="assets/search_icon.png" alt="Search"></button>
+            </div>
+            <div class="account-nav">
+                <a href="login.html">Login</a>
+                <a href="#">Sign Up</a>
+                <a href="#"><img src="assets/cart_icon.png" alt="Cart"></a>
+            </div>
+        </div>
+    </header>
+    <nav class="categories">
+        <ul>
+            <li><a href="#">Women's Fashion</a></li>
+            <li><a href="#">Health & Beauty</a></li>
+            <li><a href="#">Men's Fashion</a></li>
+            <li><a href="#">Watches & Accessories</a></li>
+            <li><a href="#">Electronic Devices</a></li>
+            <li><a href="#">TV & Home Appliances</a></li>
+            <li><a href="#">Electronic Accessories</a></li>
+            <li><a href="#">Groceries & Pets</a></li>
+            <li><a href="#">Babies & Toys</a></li>
+            <li><a href="#">Home & Lifestyle</a></li>
+            <li><a href="#">Sports & Outdoor</a></li>
+            <li><a href="#">Motors, Tools & DIY</a></li>
+        </ul>
+    </nav>
+    <div class="main-slider">
+        <div class="slider">
+            <div class="slide">
+                <img src="assets/daraz1.png" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="assets/daraz2.png" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="assets/daraz3.png" alt="Slide 3">
+            </div>
+            <div class="slide">
+                <img src="assets/daraz4.png" alt="Slide 3">
+            </div>
+            <div class="slide">
+                <img src="assets/daraz5.png" alt="Slide 3">
+            </div>
+        </div>
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+    <div class="sale-banner">
+        <img src="assets/megasalw.png" alt="Mid Year Sale">
+    </div>
+    <main>
+        <h2>Categories</h2>
+        <div class="categories-list">
+            <!-- Category items here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Daraz. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
