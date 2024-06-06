@@ -2,14 +2,13 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     event.preventDefault();
     loginUser();
 });
-
 function loginUser() {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     const loginMessage = document.getElementById('loginMessage');
 
-    if (!validateEmail(email)) {
-        loginMessage.textContent = 'Invalid email format.';
+    if (!validateEmail(email) && !validatePhone(email)) {
+        loginMessage.textContent = 'Invalid email or phone number format.';
         loginMessage.style.color = 'red';
         return;
     }
@@ -38,9 +37,4 @@ function loginUser() {
         loginMessage.textContent = 'User not found.';
         loginMessage.style.color = 'red';
     }
-}
-
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
 }
