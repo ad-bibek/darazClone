@@ -11,7 +11,6 @@ body {
     padding: 0;
     background-color: #f2f2f2;
 }
-
 .navbar {
     background-color: var(--primary-color);
     padding: 10px 20px;
@@ -33,23 +32,24 @@ body {
 }
 
 .container {
-    max-width: 500px;
+    max-width: 800px;
     margin: 50px auto;
     padding: 20px;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left;
 }
+
 
 h2 {
     margin-bottom: 20px;
     color: #333;
+    text-align: center;
 }
 
 .input-group {
     margin-bottom: 15px;
-    text-align: left;
 }
 
 .input-group label {
@@ -57,16 +57,50 @@ h2 {
     margin-bottom: 5px;
 }
 
-.input-group input {
-    width: 100%;
+.input-group input,
+.input-group select {
+    width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
-.login-btn {
+.input-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.input-group .send-code-btn {
+    padding: 10px 20px;
+    background-color: #f57224;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.input-group .send-code-btn:hover {
+    background-color: #e65a00;
+}
+
+.input-group .get-code-other-methods {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.input-group .get-code-other-methods:hover {
+    text-decoration: underline;
+}
+
+.signup-btn {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     background-color: #f57224;
     color: white;
     border: none;
@@ -75,15 +109,32 @@ h2 {
     font-size: 16px;
 }
 
-.login-btn:hover {
+.signup-btn:hover {
     background-color: #e65a00;
 }
 
-.login-alt {
+.terms {
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.terms a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.alt-signup {
+    text-align: center;
     margin: 20px 0;
 }
 
-.login-alt p {
+.alt-signup p {
     margin-bottom: 10px;
 }
 
@@ -96,44 +147,27 @@ h2 {
     cursor: pointer;
     font-size: 16px;
     color: white;
+    margin: 5px;
 }
 
 .facebook-btn {
     background-color: #3b5998;
-    margin-right: 2%;
 }
 
 .google-btn {
     background-color: #db4a39;
 }
 
-.reset-password {
-    display: block;
-    margin-top: 15px;
-    color: #3498db;
-    text-decoration: none;
-}
-
-.reset-password:hover {
-    text-decoration: underline;
-}
-
-#loginMessage {
-    margin-top: 15px;
-    font-size: 14px;
+.login-link {
     text-align: center;
-    color: red; /* This can be adjusted based on the type of message (error/success) */
-}
-
-.register-link {
     margin-top: 20px;
 }
 
-.register-link a {
+.login-link a {
     color: #3498db;
     text-decoration: none;
 }
 
-.register-link a:hover {
+.login-link a:hover {
     text-decoration: underline;
 }

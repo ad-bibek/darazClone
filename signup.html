@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Daraz Account</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"> 
+            <a href="/"><img src="assets/kinnus.png" alt="Daraz Logo" width="100px"></a>
+        </div>
+        <div class="nav-links">
+            <a href="#">Become a Seller</a>
+            <a href="#">Payments & Recharge</a>
+            <a href="#">Help & Support</a>
+            <a href="#">Daraz Logistics Partner</a>
+        </div>
+        <div class="auth-links">
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Create your Kinnus Account</h2>
+        <form id="registerForm">
+            <div class="input-group">
+                <label for="phoneNumber">Phone Number*</label>
+                <input type="text" id="phoneNumber" placeholder="Please enter your phone number">
+            </div>
+            <div class="input-group">
+                <label for="verificationCode">Verification Code from WhatsApp*</label>
+                <input type="text" id="verificationCode" placeholder="Verification Code">
+                <button type="button" class="send-code-btn">Send</button>
+                <a href="#" class="get-code-other-methods">Get code via other methods</a>
+            </div>
+            <div class="input-group">
+                <label for="password">Password*</label>
+                <input type="password" id="password" placeholder="Minimum 6 characters with a number and a letter">
+            </div>
+            <div class="input-group">
+                <label for="birthday">Birthday</label>
+                <select id="birthMonth">
+                    <option>Month</option>
+                    <!-- Add other months here -->
+                </select>
+                <select id="birthDay">
+                    <option>Day</option>
+                    <!-- Add other days here -->
+                </select>
+                <select id="birthYear">
+                    <option>Year</option>
+                    <!-- Add other years here -->
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option>Select</option>
+                    <!-- Add gender options here -->
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="fullName">Full Name*</label>
+                <input type="text" id="fullName" placeholder="Enter your first and last name">
+            </div>
+            <div class="input-group">
+                <input type="checkbox" id="promotions" name="promotions">
+                <label for="promotions">I'd like to receive exclusive offers and promotions via SMS</label>
+            </div>
+            <button type="submit" class="signup-btn">SIGN UP</button>
+            <p class="terms">By clicking “SIGN UP”, I agree to Daraz’s <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
+        </form>
+        <div class="alt-signup">
+            <p>Or, sign up with</p>
+            <button type="button" class="facebook-btn">Facebook</button>
+            <button type="button" class="google-btn">Google</button>
+        </div>
+        <p class="login-link">Already member? <a href="login.html">Login here.</a></p>
+    </div>
+</body>
+</html>
