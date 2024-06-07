@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinnus Template</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        
-    </style>
 </head>
 <body>
     <header>
@@ -33,9 +30,11 @@
         </div>
     </header>
     <div class="displayarea">
-        <nav>
-            <ul id="nav-menu" class="nav-menu-vertical"></ul>
-        </nav>
+        <div class="side-bar">
+            <nav>
+                <ul id="nav-menu" class="nav-menu-vertical"></ul>
+            </nav>
+        </div>
         <div class="main-slider">
             <div class="slider">
                 <div class="slide">
@@ -63,13 +62,12 @@
     </div>
     <main>
         <h2>Categories</h2>
-        <div class="categories-list">
-            <!-- Category items here -->
-        </div>
+        <div class="categories-list"></div>
     </main>
     <footer>
         <p>&copy; 2024 Kinnus. All rights reserved.</p>
     </footer>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>

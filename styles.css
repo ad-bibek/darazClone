@@ -3,56 +3,57 @@
     --secondary-color: #888cf5;
     --white: #ffffff;
     --gray: #f5f5f5;
+    --dark-gray: #333;
 }
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--gray);
 }
 
-header .top-bar {
+.top-bar {
     background-color: var(--primary-color);
     padding: 10px;
-    text-align: center;
+    text-align: right;
 }
 
-header .top-bar a {
-    color: var(--white);
-    margin: 0 15px;
+.top-bar a {
+    margin: 0 10px;
     text-decoration: none;
-    font-size: 14px;
+    color: var(--white);
+    position: left;
 }
 
-header .main-header {
-    background-color: var(--primary-color);
+.main-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-header .main-header .logo img {
+.main-header .logo img {
     height: 50px;
 }
 
-header .main-header .search-bar {
+.search-bar {
     flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
     margin: 0 20px;
 }
 
-header .main-header .search-bar input {
-    width: 300px;
+.search-bar input {
+    width: 100%;
+    max-width: 300px;
     padding: 10px;
     border: none;
     border-radius: 5px 0 0 5px;
 }
 
-header .main-header .search-bar button {
+.search-bar button {
     background-color: var(--white);
     border: none;
     padding: 10px;
@@ -60,61 +61,60 @@ header .main-header .search-bar button {
     cursor: pointer;
 }
 
-header .main-header .search-bar button img {
+.search-bar button img {
     width: 20px;
 }
 
-header .main-header .account-nav a {
-    color: var(--white);
+.account-nav a {
     margin: 0 10px;
     text-decoration: none;
+    color: var(--white);
     font-size: 14px;
 }
 
-header .main-header .account-nav a img {
+.account-nav a img {
     width: 20px;
 }
 
-nav.categories {
-    background-color: var(--white);
-    padding: 20px;
+.displayarea {
+    display: flex;
+    margin-top: 20px; /* Add margin to ensure it doesn't overlap */
 }
 
-nav.categories ul {
+.side-bar {
+    flex: 0 0 200px;
+    background-color: var(--gray);
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2; /* Ensure sidebar has higher z-index */
+}
+
+.side-bar nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-nav.categories ul li {
-    padding: 10px 0;
+.side-bar nav ul li {
+    margin-bottom: 10px;
 }
 
-nav.categories ul li a {
+.side-bar nav ul li a {
     text-decoration: none;
-    color: #333;
-}
-
-.nav-menu-vertical {
-    list-style-type: none;
-    padding: 0;
-}
-.nav-menu-vertical li {
-    margin: 5px 0;
-}
-.nav-menu-vertical a {
-    text-decoration: none;
-    color: #333;
-}
-.nav-menu-vertical a:hover {
-    text-decoration: underline;
+    color: var(--dark-gray);
+    display: block;
+    padding: 10px;
+    background-color: var(--white);
+    border-radius: 4px;
 }
 
 .main-slider {
+    flex: 1;
     position: relative;
-    max-width: 100%;
-    margin: auto;
+    margin-left: 20px;
     overflow: hidden;
+    z-index: 1; /* Ensure slider has lower z-index */
 }
 
 .slider {
@@ -136,16 +136,19 @@ nav.categories ul li a {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    width: auto;
-    margin-top: -22px;
     padding: 16px;
-    color: white;
+    color: var(--white);
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
     background-color: rgba(0,0,0,0.5);
+    user-select: none;
+    z-index: 1; /* Ensure prev and next buttons stay on top of the slider */
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
 }
 
 .next {
@@ -155,6 +158,10 @@ nav.categories ul li a {
 
 .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
+}
+
+.sale-banner {
+    margin: 20px 0; /* Add margin to separate from other elements */
 }
 
 .sale-banner img {
@@ -176,4 +183,64 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+.nav-menu-vertical {
+    list-style-type: none;
+    padding: 0;
+    width: 200px;
+    background: var(--white);
+    border: 1px solid #ddd;
+    margin: 0;
+}
+
+.nav-menu-vertical li {
+    position: relative;
+}
+
+.nav-menu-vertical a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 172px;
+    font-family: Roboto-Regular;
+    color: #757575;
+    cursor: pointer;
+}
+
+.nav-menu-vertical a:hover, .nav-menu-vertical .active > a {
+    background-color: var(--gray);
+    color: var(--primary-color);
+}
+
+.sub-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 200px;
+    width: 200px;
+    background: var(--white);
+    border: 1px solid #ddd;
+    display: none;
+}
+
+.sub-menu li a {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.sub-menu li a:hover {
+    background-color: var(--gray);
+    color: var(--primary-color);
+}
+
+.nav-menu-vertical li:hover > .sub-menu {
+    display: block;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
 }
