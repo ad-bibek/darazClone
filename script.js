@@ -171,6 +171,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderCategories();
 
+    // Fetch and display categories
+    function fetchCategories() {
+        fetch('https://dummyjson.com/products/categories')
+            .then(response => response.json())
+            .then(categories => {
+                renderCategoriesGrid(categories);
+            })
+            .catch(error => console.error('Error fetching categories:', error));
+    }
+
+    function renderCategoriesGrid(categories) {
+        const categoriesGrid = document.getElementById('categories-grid');
+        categoriesGrid.innerHTML = ''; // Clear any existing content
+
+        categories.forEach(category => {
+            const categoryBox = document.createElement('div');
+            categoryBox.className = 'category-box';
+
+            const img = document.createElement('img');
+            img.src = `https://via.placeholder.com/150?text=${category}`;
+            img.alt = category;
+
+            const title = document.createElement('h3');
+            title.textContent = category;
+
+            categoryBox.appendChild(img);
+            categoryBox.appendChild(title);
+            categoriesGrid.appendChild(categoryBox);
+        });
+    }
+
+    fetchCategories();
+
     // Fetch and display products
     function fetchProducts() {
         fetch('https://dummyjson.com/products')
@@ -183,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProducts(products) {
         const productGrid = document.getElementById('product-grid');
-        productGrid.innerHTML = ''; // Clear any existing content
+        productGrid.innerHTML = ''; 
 
         products.forEach(product => {
             const productBox = document.createElement('div');
@@ -206,5 +239,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    fetchProducts();
+
+function fetchProducts() {
+    fetch('https://dummyjson.com/products')
+        .then(response => response.json())
+        .then(data => {
+            renderProducts(data.products);
+            addProductClickListeners(data.products);
+        })
+        .catch(error => console.error('Error fetching products:', error));
+}
+
+// Add event listeners to product elements
+function addProductClickListeners(products) {
+    const productBoxes = document.querySelectorAll('.product-box');
+    productBoxes.forEach((productBox, index) => {
+        productBox.addEventListener('click', () => {
+            const productId = products[index].id; // Assuming each product has an 'id' property
+            navigateToProductDetails(productId);
+        });
+    });
+}
+
+// Navigate to product details page
+function navigateToProductDetails(productId) {
+    window.location.href = `product-details.html?id=${productId}`;
+}
+
+fetchProducts();
 });

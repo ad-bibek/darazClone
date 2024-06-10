@@ -22,7 +22,6 @@ body {
     margin: 0 10px;
     text-decoration: none;
     color: var(--white);
-    position: left;
 }
 
 .main-header {
@@ -31,7 +30,7 @@ body {
     align-items: center;
     padding: 10px 20px;
     background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .main-header .logo img {
@@ -78,7 +77,7 @@ body {
 
 .displayarea {
     display: flex;
-    margin-top: 20px; 
+    margin-top: 20px;
     background-color: var(--white);
 }
 
@@ -86,9 +85,9 @@ body {
     flex: 0 0 200px;
     background-color: var(--gray);
     padding: 10px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: relative;
-    z-index: 2; /* Ensure sidebar has higher z-index */
+    z-index: 2;
 }
 
 .side-bar nav ul {
@@ -115,7 +114,7 @@ body {
     position: relative;
     margin-left: 20px;
     overflow: hidden;
-    z-index: 1; /* Ensure slider has lower z-index */
+    z-index: 1;
 }
 
 .slider {
@@ -142,9 +141,9 @@ body {
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     user-select: none;
-    z-index: 1; /* Ensure prev and next buttons stay on top of the slider */
+    z-index: 1;
 }
 
 .prev {
@@ -158,11 +157,11 @@ body {
 }
 
 .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .sale-banner {
-    margin: 20px 0; /* Add margin to separate from other elements */
+    margin: 20px 0;
 }
 
 .sale-banner img {
@@ -210,7 +209,6 @@ footer p {
 
 .nav-menu-vertical a:hover, .nav-menu-vertical .active > a {
     background-color: var(--gray);
-    
 }
 
 .sub-menu {
@@ -241,11 +239,57 @@ footer p {
 }
 
 header, footer {
-    background-color: var(--primary-color) 
+    background-color: var(--primary-color);
 }
 
 .container {
     width: 80%;
     margin: 0 auto;
-    
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-box {
+    width: calc(25% - 20px);
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product-box img {
+    max-width: 100%;
+    height: auto;
+}
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category-box {
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-box img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.category-box h3 {
+    font-size: 16px;
+    margin: 0 0 10px;
 }
