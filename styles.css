@@ -176,7 +176,6 @@ main {
 }
 
 footer {
-    background-color: var(--secondary-color);
     color: var(--white);
     padding: 20px;
     text-align: center;
@@ -241,12 +240,12 @@ footer p {
     display: block;
 }
 
-header, .sale-banner, footer {
+header, footer {
     background-color: var(--primary-color) 
 }
 
 .container {
-    width: 85%;
+    width: 80%;
     margin: 0 auto;
     
 }

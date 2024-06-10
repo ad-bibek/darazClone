@@ -23,11 +23,6 @@ function autoSlide() {
     setTimeout(autoSlide, 3000);
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    showSlide(slideIndex);
-    setTimeout(autoSlide, 3000);
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     const categories = [
         { 
@@ -175,4 +170,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderCategories();
+
+    // Fetch and display products
+    function fetchProducts() {
+        fetch('https://dummyjson.com/products')
+            .then(response => response.json())
+            .then(data => {
+                renderProducts(data.products);
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    }
+
+    function renderProducts(products) {
+        const productGrid = document.getElementById('product-grid');
+        productGrid.innerHTML = ''; // Clear any existing content
+
+        products.forEach(product => {
+            const productBox = document.createElement('div');
+            productBox.className = 'product-box';
+
+            const img = document.createElement('img');
+            img.src = product.thumbnail;
+            img.alt = product.title;
+
+            const title = document.createElement('h3');
+            title.textContent = product.title;
+
+            const price = document.createElement('p');
+            price.textContent = `$${product.price}`;
+
+            productBox.appendChild(img);
+            productBox.appendChild(title);
+            productBox.appendChild(price);
+            productGrid.appendChild(productBox);
+        });
+    }
+
+    fetchProducts();
 });
