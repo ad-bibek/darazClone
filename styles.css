@@ -78,7 +78,8 @@ body {
 
 .displayarea {
     display: flex;
-    margin-top: 20px; /* Add margin to ensure it doesn't overlap */
+    margin-top: 20px; 
+    background-color: var(--white);
 }
 
 .side-bar {
@@ -210,7 +211,7 @@ footer p {
 
 .nav-menu-vertical a:hover, .nav-menu-vertical .active > a {
     background-color: var(--gray);
-    color: var(--primary-color);
+    
 }
 
 .sub-menu {
@@ -240,7 +241,12 @@ footer p {
     display: block;
 }
 
+header, .sale-banner, footer {
+    background-color: var(--primary-color) 
+}
+
 .container {
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
+    
 }
