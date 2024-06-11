@@ -172,37 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCategories();
 
     // Fetch and display categories
-    function fetchCategories() {
-        fetch('https://dummyjson.com/products/categories')
-            .then(response => response.json())
-            .then(categories => {
-                renderCategoriesGrid(categories);
-            })
-            .catch(error => console.error('Error fetching categories:', error));
-    }
-
-    function renderCategoriesGrid(categories) {
-        const categoriesGrid = document.getElementById('categories-grid');
-        categoriesGrid.innerHTML = ''; // Clear any existing content
-
-        categories.forEach(category => {
-            const categoryBox = document.createElement('div');
-            categoryBox.className = 'category-box';
-
-            const img = document.createElement('img');
-            img.src = `https://via.placeholder.com/150?text=${category}`;
-            img.alt = category;
-
-            const title = document.createElement('h3');
-            title.textContent = category;
-
-            categoryBox.appendChild(img);
-            categoryBox.appendChild(title);
-            categoriesGrid.appendChild(categoryBox);
-        });
-    }
-
-    fetchCategories();
+    
 
     // Fetch and display products
     function fetchProducts() {

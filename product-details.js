@@ -2,7 +2,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
-// Fetch the product details
 fetch(`https://dummyjson.com/products/${productId}`)
     .then(response => response.json())
     .then(product => {
@@ -13,9 +12,8 @@ fetch(`https://dummyjson.com/products/${productId}`)
 // Function to render product details
 function renderProductDetails(product) {
     const productDetailsContainer = document.getElementById('product-details');
-    productDetailsContainer.innerHTML = ''; // Clear any existing content
+    productDetailsContainer.innerHTML = ''; 
 
-    // Create HTML elements to display product details
     const title = document.createElement('h3');
     title.textContent = product.title;
 
@@ -25,7 +23,6 @@ function renderProductDetails(product) {
     const description = document.createElement('p');
     description.textContent = product.description;
 
-    // Create a container for the images
     const imagesContainer = document.createElement('div');
     imagesContainer.className = 'images-container';
 
@@ -38,9 +35,29 @@ function renderProductDetails(product) {
         imagesContainer.appendChild(img);
     });
 
-    // Append elements to the product details container
+    const addToCartButton = document.createElement('button');
+    addToCartButton.textContent = 'Add to Cart';
+    addToCartButton.className = 'add-to-cart';
+
+    const buyNowButton = document.createElement('button');
+    buyNowButton.textContent = 'Buy Now';
+    buyNowButton.className = 'buy-now';
+
+    // Add event listeners to the buttons
+    addToCartButton.addEventListener('click', () => {
+        addToCart(product);
+    });
+    buyNowButton.addEventListener('click', () => {
+        buyNow(product);
+    });
+
+    // Add the product details to the product details container
+    
+
+    productDetailsContainer.appendChild(imagesContainer);
     productDetailsContainer.appendChild(title);
     productDetailsContainer.appendChild(price);
     productDetailsContainer.appendChild(description);
-    productDetailsContainer.appendChild(imagesContainer);
+    productDetailsContainer.appendChild(addToCartButton);
+    productDetailsContainer.appendChild(buyNowButton);
 }
