@@ -82,7 +82,7 @@ body {
 }
 
 .side-bar {
-    flex: 0 0 200px;
+    flex: 0 0 10px;
     background-color: var(--gray);
     padding: 10px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -292,4 +292,39 @@ header, footer {
 .category-box h3 {
     font-size: 16px;
     margin: 0 0 10px;
+}
+
+
+.product-details-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-details-container h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-details-container p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.images-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
 }
