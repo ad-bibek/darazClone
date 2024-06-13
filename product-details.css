@@ -210,17 +210,11 @@ header, footer {
     background-color: var(--button-blue);
 }
 
-/* .product-info .actions .buy-now:hover {
-    background-color:
-} */
+
 
 .product-info .actions .add-to-cart {
     background-color: var(--button-orange);
 }
-
- /* .product-info .actions .add-to-cart:hover {
-    background-color: darken(var(--button-orange), 10%);
-}  */
 
 footer {
     color: var(--white);
@@ -279,8 +273,8 @@ footer p {
 
 .product-image-container {
     position: relative;
-    width: 100%;
-    max-width: 500px;
+    width: 50%;
+    max-width: 300px;
     margin: 0 auto;
     text-align: center;
 }
@@ -309,6 +303,7 @@ footer p {
 .thumbnails-container .thumbnail:hover {
     border: 2px solid #333;
 }
+
 /* Dropdown Button */
 .dropbtn {
     background-color: var(--primary-color);

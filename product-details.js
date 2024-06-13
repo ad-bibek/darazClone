@@ -7,6 +7,7 @@ fetch(`https://dummyjson.com/products/${productId}`)
     .then(product => {
         renderProductDetails(product);
         addZoomEffect();
+        addCartFunctionality(product); // Add this line to initialize cart functionality
     })
     .catch(error => console.error('Error fetching product details:', error));
 
@@ -28,20 +29,20 @@ function renderProductDetails(product) {
     thumbnailsContainer.className = 'thumbnails-container';
 
     product.images.forEach((image, index) => {
-    const thumbnail = document.createElement('img');
-    thumbnail.src = image;
-    thumbnail.alt = product.title;
-    thumbnail.className = 'thumbnail';
-    thumbnail.addEventListener('click', () => {
-      const mainImage = document.getElementById('mainImage');
-      mainImage.classList.remove('loaded');
-      setTimeout(() => {
-        mainImage.src = image;
-        mainImage.classList.add('loaded');
-      }, 300);
+        const thumbnail = document.createElement('img');
+        thumbnail.src = image;
+        thumbnail.alt = product.title;
+        thumbnail.className = 'thumbnail';
+        thumbnail.addEventListener('click', () => {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.classList.remove('loaded');
+            setTimeout(() => {
+                mainImage.src = image;
+                mainImage.classList.add('loaded');
+            }, 300);
+        });
+        thumbnailsContainer.appendChild(thumbnail);
     });
-    thumbnailsContainer.appendChild(thumbnail);
-  });
 
     imageContainer.appendChild(thumbnailsContainer);
 
@@ -77,7 +78,6 @@ function renderProductDetails(product) {
     actions.innerHTML = `
         <button class="buy-now">Buy Now </button>
         <button class="add-to-cart">Add to Cart</button> 
-        
     `;
 
     infoContainer.appendChild(title);
@@ -95,26 +95,34 @@ function renderProductDetails(product) {
 // Function to add zoom effect
 function addZoomEffect() {
     const mainImage = document.getElementById('mainImage');
-  
+
     mainImage.addEventListener('mousemove', (e) => {
-      const width = mainImage.offsetWidth;
-      const height = mainImage.offsetHeight;
-      const mouseX = e.offsetX;
-      const mouseY = e.offsetY;
-      const bgPosX = (mouseX / width * 100);
-      const bgPosY = (mouseY / height * 100);
-      mainImage.style.transformOrigin = `${bgPosX}% ${bgPosY}%`;
-      mainImage.classList.add('zoomed');
+        const width = mainImage.offsetWidth;
+        const height = mainImage.offsetHeight;
+        const mouseX = e.offsetX;
+        const mouseY = e.offsetY;
+        const bgPosX = (mouseX / width * 100);
+        const bgPosY = (mouseY / height * 100);
+        mainImage.style.transformOrigin = `${bgPosX}% ${bgPosY}%`;
+        mainImage.classList.add('zoomed');
     });
-  
+
     mainImage.addEventListener('mouseleave', () => {
-      mainImage.style.transformOrigin = 'center center';
-      mainImage.classList.remove('zoomed');
+        mainImage.style.transformOrigin = 'right left';
+        mainImage.classList.remove('zoomed');
     });
-  }
+}
+
+// Function to add the product to the cart
 function addToCart(product) {
-    // Simulate adding to cart
     alert('Added to Cart');
     console.log('Product added to cart:', product);
-    
+}
+
+// Function to add cart functionality
+function addCartFunctionality(product) {
+    const addToCartButton = document.querySelector('.add-to-cart');
+    addToCartButton.addEventListener('click', () => {
+        addToCart(product);
+    });
 }

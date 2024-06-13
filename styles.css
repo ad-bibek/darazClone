@@ -183,15 +183,17 @@ footer {
 footer p {
     margin: 0;
 }
-
-.nav-menu-vertical {
-    list-style-type: none;
-    padding: 1;
-    width: 200px;
-    background: var(--white);
-    border: 1px solid #ddd;
-    margin: 0;
+#nav-menu li {
+    margin: 5px 0; /* Adjust the value to reduce the space between items */
 }
+
+#nav-menu li a {
+    padding: 2px 0; 
+    display: block; 
+    text-decoration: none; 
+    color: #333;
+}
+
 
 .nav-menu-vertical li {
     position: relative;

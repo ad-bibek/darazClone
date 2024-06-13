@@ -138,43 +138,39 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderCategories() {
         const navMenu = document.getElementById('nav-menu');
         navMenu.innerHTML = ''; // Clear any existing content
-
+      
         categories.forEach(category => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = '#';
-            a.textContent = category.name;
-            a.dataset.id = category.id; // Store the id in a data attribute
-            li.appendChild(a);
-
-            // Check if category has subcategories
-            if (category.subcategories && category.subcategories.length > 0) {
-                const subUl = document.createElement('ul');
-                subUl.className = 'sub-menu';
-
-                category.subcategories.forEach(subcategory => {
-                    const subLi = document.createElement('li');
-                    const subA = document.createElement('a');
-                    subA.href = '#';
-                    subA.textContent = subcategory.name;
-                    subA.dataset.id = subcategory.id; // Store the id in a data attribute
-                    subLi.appendChild(subA);
-                    subUl.appendChild(subLi);
-                });
-
-                li.appendChild(subUl);
-            }
-
-            navMenu.appendChild(li);
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#';
+          a.textContent = category.name;
+          a.dataset.id = category.id; 
+          li.appendChild(a);
+      
+          if (category.subcategories && category.subcategories.length > 0) {
+            const subUl = document.createElement('ul');
+            subUl.className = 'sub-menu';
+      
+            category.subcategories.forEach(subcategory => {
+              const subLi = document.createElement('li');
+              const subA = document.createElement('a');
+              subA.href = '#';
+              subA.textContent = subcategory.name;
+              subA.dataset.id = subcategory.id; 
+              subLi.appendChild(subA);
+              subUl.appendChild(subLi);
+            });
+      
+            li.appendChild(subUl);
+          }
+      
+          navMenu.appendChild(li);
         });
-    }
+      }
 
     renderCategories();
 
-    // Fetch and display categories
     
-
-    // Fetch and display products
     function fetchProducts() {
         fetch('https://dummyjson.com/products')
             .then(response => response.json())
