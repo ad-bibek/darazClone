@@ -231,3 +231,34 @@ footer p {
     padding: 0;
     transform: translateZ(0);
 }
+.product-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.thumbnails-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.thumbnails-container .thumbnail {
+    width: 60px;
+    height: 60px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.thumbnails-container .thumbnail:hover {
+    border: 2px solid #333;
+}

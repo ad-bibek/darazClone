@@ -17,10 +17,27 @@ function renderProductDetails(product) {
     const imageContainer = document.createElement('div');
     imageContainer.className = 'product-image-container';
 
-    const img = document.createElement('img');
-    img.src = product.images[0];
-    img.alt = product.title;
-    imageContainer.appendChild(img);
+    const mainImage = document.createElement('img');
+    mainImage.src = product.images[0];
+    mainImage.alt = product.title;
+    mainImage.id = 'mainImage';
+    imageContainer.appendChild(mainImage);
+
+    const thumbnailsContainer = document.createElement('div');
+    thumbnailsContainer.className = 'thumbnails-container';
+
+    product.images.forEach((image, index) => {
+        const thumbnail = document.createElement('img');
+        thumbnail.src = image;
+        thumbnail.alt = product.title;
+        thumbnail.className = 'thumbnail';
+        thumbnail.addEventListener('click', () => {
+            document.getElementById('mainImage').src = image;
+        });
+        thumbnailsContainer.appendChild(thumbnail);
+    });
+
+    imageContainer.appendChild(thumbnailsContainer);
 
     const infoContainer = document.createElement('div');
     infoContainer.className = 'product-info';
@@ -32,11 +49,10 @@ function renderProductDetails(product) {
    
     const price = document.createElement('div');
     price.className = 'price';
-    price.innerHTML = `Rs. ${product.price} `;
+    price.innerHTML = `Rs. ${product.price}`;
 
     const promotion = document.createElement('div');
    
-
     const description = document.createElement('div');
     description.className = 'description';
     description.textContent = product.description;
