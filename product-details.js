@@ -6,6 +6,7 @@ fetch(`https://dummyjson.com/products/${productId}`)
     .then(response => response.json())
     .then(product => {
         renderProductDetails(product);
+        addZoomEffect();
     })
     .catch(error => console.error('Error fetching product details:', error));
 
@@ -27,15 +28,20 @@ function renderProductDetails(product) {
     thumbnailsContainer.className = 'thumbnails-container';
 
     product.images.forEach((image, index) => {
-        const thumbnail = document.createElement('img');
-        thumbnail.src = image;
-        thumbnail.alt = product.title;
-        thumbnail.className = 'thumbnail';
-        thumbnail.addEventListener('click', () => {
-            document.getElementById('mainImage').src = image;
-        });
-        thumbnailsContainer.appendChild(thumbnail);
+    const thumbnail = document.createElement('img');
+    thumbnail.src = image;
+    thumbnail.alt = product.title;
+    thumbnail.className = 'thumbnail';
+    thumbnail.addEventListener('click', () => {
+      const mainImage = document.getElementById('mainImage');
+      mainImage.classList.remove('loaded');
+      setTimeout(() => {
+        mainImage.src = image;
+        mainImage.classList.add('loaded');
+      }, 300);
     });
+    thumbnailsContainer.appendChild(thumbnail);
+  });
 
     imageContainer.appendChild(thumbnailsContainer);
 
@@ -69,8 +75,9 @@ function renderProductDetails(product) {
     const actions = document.createElement('div');
     actions.className = 'actions';
     actions.innerHTML = `
-        <button class="buy-now">Buy Now</button>
-        <button class="add-to-cart">Add to Cart</button>
+        <button class="buy-now">Buy Now </button>
+        <button class="add-to-cart">Add to Cart</button> 
+        
     `;
 
     infoContainer.appendChild(title);
@@ -83,4 +90,31 @@ function renderProductDetails(product) {
 
     productDetailsContainer.appendChild(imageContainer);
     productDetailsContainer.appendChild(infoContainer);
+}
+
+// Function to add zoom effect
+function addZoomEffect() {
+    const mainImage = document.getElementById('mainImage');
+  
+    mainImage.addEventListener('mousemove', (e) => {
+      const width = mainImage.offsetWidth;
+      const height = mainImage.offsetHeight;
+      const mouseX = e.offsetX;
+      const mouseY = e.offsetY;
+      const bgPosX = (mouseX / width * 100);
+      const bgPosY = (mouseY / height * 100);
+      mainImage.style.transformOrigin = `${bgPosX}% ${bgPosY}%`;
+      mainImage.classList.add('zoomed');
+    });
+  
+    mainImage.addEventListener('mouseleave', () => {
+      mainImage.style.transformOrigin = 'center center';
+      mainImage.classList.remove('zoomed');
+    });
+  }
+function addToCart(product) {
+    // Simulate adding to cart
+    alert('Added to Cart');
+    console.log('Product added to cart:', product);
+    
 }
