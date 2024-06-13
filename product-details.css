@@ -223,3 +223,11 @@ footer {
 footer p {
     margin: 0;
 }
+.next-slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+    transform: translateZ(0);
+}

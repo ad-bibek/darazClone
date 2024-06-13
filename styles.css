@@ -186,7 +186,7 @@ footer p {
 
 .nav-menu-vertical {
     list-style-type: none;
-    padding: 0;
+    padding: 1;
     width: 200px;
     background: var(--white);
     border: 1px solid #ddd;
@@ -201,7 +201,37 @@ footer p {
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
-    width: 172px;
+    width: 150px;.nav-menu-vertical {
+        list-style-type: none;
+        padding: 0;
+        width: 200px;
+        background: var(--white);
+        border: 1px solid #ddd;
+        margin: 0; 
+    }
+    
+    .nav-menu-vertical li {
+        position: relative;
+        margin: 0; 
+        padding: 0; 
+    }
+    
+    .nav-menu-vertical a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block; 
+        width: 100%;
+        box-sizing: border-box; 
+        font-family: Roboto-Regular;
+        color: #757575;
+        cursor: pointer;
+        padding: 5px 10px;
+        margin: 0; 
+    }
+    
+    .nav-menu-vertical a:hover, .nav-menu-vertical .active > a {
+        background-color: var(--gray);
+    }
     font-family: Roboto-Regular;
     color: #757575;
     cursor: pointer;

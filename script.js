@@ -180,6 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 renderProducts(data.products);
+                addProductClickListeners(data.products);
+                setupSearch(data.products); // Setup search functionality
             })
             .catch(error => console.error('Error fetching products:', error));
     }
@@ -209,32 +211,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-function fetchProducts() {
-    fetch('https://dummyjson.com/products')
-        .then(response => response.json())
-        .then(data => {
-            renderProducts(data.products);
-            addProductClickListeners(data.products);
-        })
-        .catch(error => console.error('Error fetching products:', error));
-}
-
-// Add event listeners to product elements
-function addProductClickListeners(products) {
-    const productBoxes = document.querySelectorAll('.product-box');
-    productBoxes.forEach((productBox, index) => {
-        productBox.addEventListener('click', () => {
-            const productId = products[index].id; // Assuming each product has an 'id' property
-            navigateToProductDetails(productId);
+    function addProductClickListeners(products) {
+        const productBoxes = document.querySelectorAll('.product-box');
+        productBoxes.forEach((productBox, index) => {
+            productBox.addEventListener('click', () => {
+                const productId = products[index].id; // Assuming each product has an 'id' property
+                navigateToProductDetails(productId);
+            });
         });
-    });
-}
+    }
 
-// Navigate to product details page
-function navigateToProductDetails(productId) {
-    window.location.href = `product-details.html?id=${productId}`;
-}
+    function navigateToProductDetails(productId) {
+        window.location.href = `product-details.html?id=${productId}`;
+    }
 
-fetchProducts();
+    function setupSearch(products) {
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.title.toLowerCase().includes(query)
+            );
+            renderProducts(filteredProducts);
+            addProductClickListeners(filteredProducts); // Re-add click listeners for filtered products
+        });
+    }
+
+    fetchProducts();
 });
