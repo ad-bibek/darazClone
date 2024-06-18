@@ -3,32 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Your Kinnus Account</title>
-    <link rel="stylesheet" href="signup.css">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css">
 </head>
 <body>
     <header>
-    <nav class="navbar">
-        <div class=""></div>
-        <div class="logo"> 
-            <a href="/"><img src="assets/kinnus.png" alt="Kinnus Logo" width="200px"></a>
+        <div class="top-bar">
+            <div class="container">
+                <a href="#">Become a Seller</a>
+                <a href="#">Payments & Recharge</a>
+                <a href="#">Help & Support</a>
+                <a href="#">Kinnus Logistics Partner</a>
+            </div>
         </div>
-        <div class="nav-links">
-            <a href="#">Become a Seller</a>
-            <a href="#">Payments & Recharge</a>
-            <a href="#">Help & Support</a>
-            <a href="#">Kinnus Logistics Partner</a>
+        <div class="main-header container">
+            <div class="logo">
+                <a href="/"><img src="assets/kinnus.png" alt="Kinnus Logo"></a>
+            </div>
+            <div class="categories">
+                <div class="dropdown">
+                    <button class="dropbtn">Categories</button>
+                    <div class="dropdown-content">
+                        <a href="#">Category 1</a>
+                        <a href="#">Category 2</a>
+                        <a href="#">Category 3</a>
+                        <a href="#">Category 4</a>
+                        <a href="#">Category 5</a>
+                    </div>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search in Kinnus">
+                <button><img src="assets/search_icon.png" alt="Search"></button>
+            </div>
+            <div class="account-nav">
+                <a href="login.html">Login</a>
+                <a href="signup.html">Sign Up</a>
+                <a href="cart.html"><img src="assets/cart_icon.png" alt="Cart"></a>
+            </div>
         </div>
-        <div class="auth-links">
-            <a href="login.html">Login</a>
-            <a href="signup.html">Sign Up</a>
-        </div>
-    </nav>
-</header>
-<footer class="container">
-    <p>&copy; 2024 Kinnus. All rights reserved.</p>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="script.js"></script>
+    </header>
+    <main class="container">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+    </main>
+    <footer class="container">
+        <p>&copy; 2024 Kinnus. All rights reserved.</p>
+    </footer>
+    <script src="cart.js"></script>
 </body>
 </html>

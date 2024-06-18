@@ -249,6 +249,7 @@ footer p {
 }
 
 .product-image-container #mainImage.zoomed {
+    
     transform: scale(2.5); 
 }
 

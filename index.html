@@ -33,7 +33,8 @@
         </div>
     </header>
     <div class="displayarea container">
-        <div class="sidebar-menu">
+        <div class="side-bar">
+            <nav>
                 <ul class="nav-menu-vertical">
                     <li><a href="#"><i class="fas fa-female"></i> Women's Fashion</a></li>
                     <li><a href="#"><i class="fas fa-heartbeat"></i> Health & Beauty</a></li>
@@ -48,43 +49,45 @@
                     <li><a href="#"><i class="fas fa-football-ball"></i> Sports & Outdoor</a></li>
                     <li><a href="#"><i class="fas fa-tools"></i> Motors, Tools & DIY</a></li>
                 </ul>
-                    </div>
-    </div>
-    
-        <div class="side-bar">
-            <nav>
-                <ul id="nav-menu" class="nav-menu-vertical"></ul>
             </nav>
         </div>
-        <div class="main-slider container">
-            <div class="slider">
-                <div class="slide">
-                    <img src="assets/daraz1.png" alt="Slide 1">
+        <div class="main-content">
+            <div class="main-slider">
+                <div class="slider">
+                    <div class="slide">
+                        <img src="assets/daraz1.png" alt="Slide 1">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/daraz2.png" alt="Slide 2">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/daraz3.png" alt="Slide 3">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/daraz4.png" alt="Slide 4">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/daraz5.png" alt="Slide 5">
+                    </div>
                 </div>
-                <div class="slide">
-                    <img src="assets/daraz2.png" alt="Slide 2">
-                </div>
-                <div class="slide">
-                    <img src="assets/daraz3.png" alt="Slide 3">
-                </div>
-                <div class="slide">
-                    <img src="assets/daraz4.png" alt="Slide 4">
-                </div>
-                <div class="slide">
-                    <img src="assets/daraz5.png" alt="Slide 5">
-                </div>
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
             </div>
-            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            <div class="sale-banner">
+                <img src="assets/megasalw.png" alt="Mid Year Sale">
+            </div>
+            <main>
+                
+                <h2>Products</h2>
+                <div class="product-grid" id="product-grid"></div>
+            </main>
         </div>
     </div>
-    <div class="sale-banner container">
-        <img src="assets/megasalw.png" alt="Mid Year Sale">
+    <div class="side-bar">
+        <nav>
+            <ul id="nav-menu" class="nav-menu-vertical"></ul>
+        </nav>
     </div>
-    <main class="container">
-        <h2>Products</h2>
-        <div class="product-grid" id="product-grid"></div>
-    </main>
     <footer class="container">
         <p>&copy; 2024 Kinnus. All rights reserved.</p>
     </footer>
@@ -92,3 +95,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+

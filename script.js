@@ -24,49 +24,48 @@ function autoSlide() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const categories = [
-            ];
+    const categories = [];
 
     function renderCategories() {
         const navMenu = document.getElementById('nav-menu');
-        navMenu.innerHTML = ''; 
-      
+        navMenu.innerHTML = '';
+
         categories.forEach(category => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = '#';
-          a.textContent = category.name;
-          a.dataset.id = category.id; 
-          li.appendChild(a);
-      
-          if (category.subcategories && category.subcategories.length > 0) {
-            const subUl = document.createElement('ul');
-            subUl.className = 'sub-menu';
-      
-            category.subcategories.forEach(subcategory => {
-              const subLi = document.createElement('li');
-              const subA = document.createElement('a');
-              subA.href = '#';
-              subA.textContent = subcategory.name;
-              subA.dataset.id = subcategory.id; 
-              subLi.appendChild(subA);
-              subUl.appendChild(subLi);
-            });
-      
-            li.appendChild(subUl);
-          }
-      
-          navMenu.appendChild(li);
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '#';
+            a.textContent = category.name;
+            a.dataset.id = category.id;
+            li.appendChild(a);
+
+            if (category.subcategories && category.subcategories.length > 0) {
+                const subUl = document.createElement('ul');
+                subUl.className = 'sub-menu';
+
+                category.subcategories.forEach(subcategory => {
+                    const subLi = document.createElement('li');
+                    const subA = document.createElement('a');
+                    subA.href = '#';
+                    subA.textContent = subcategory.name;
+                    subA.dataset.id = subcategory.id;
+                    subLi.appendChild(subA);
+                    subUl.appendChild(subLi);
+                });
+
+                li.appendChild(subUl);
+            }
+
+            navMenu.appendChild(li);
         });
-      }
+    }
 
     renderCategories();
 
-    
     function fetchProducts() {
         fetch('https://dummyjson.com/products')
             .then(response => response.json())
             .then(data => {
+                console.log('Fetched Products:', data.products); // Log fetched products
                 renderProducts(data.products);
                 addProductClickListeners(data.products);
                 setupSearch(data.products); // Setup search functionality
@@ -121,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 product.title.toLowerCase().includes(query)
             );
             renderProducts(filteredProducts);
-            addProductClickListeners(filteredProducts); // Re-add click listeners for filtered products
+            addProductClickListeners(filteredProducts); 
         });
     }
 

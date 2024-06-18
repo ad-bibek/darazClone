@@ -7,7 +7,7 @@ fetch(`https://dummyjson.com/products/${productId}`)
     .then(product => {
         renderProductDetails(product);
         addZoomEffect();
-        addCartFunctionality(product); // Add this line to initialize cart functionality
+        addCartFunctionality(product); // Initialize cart functionality
     })
     .catch(error => console.error('Error fetching product details:', error));
 
@@ -76,8 +76,8 @@ function renderProductDetails(product) {
     const actions = document.createElement('div');
     actions.className = 'actions';
     actions.innerHTML = `
-        <button class="buy-now">Buy Now </button>
-        <button class="add-to-cart">Add to Cart</button> 
+        <button class="buy-now">Buy Now</button>
+        <button class="add-to-cart">Add to Cart</button>
     `;
 
     infoContainer.appendChild(title);
@@ -92,7 +92,6 @@ function renderProductDetails(product) {
     productDetailsContainer.appendChild(infoContainer);
 }
 
-// Function to add zoom effect
 function addZoomEffect() {
     const mainImage = document.getElementById('mainImage');
 
@@ -115,8 +114,12 @@ function addZoomEffect() {
 
 // Function to add the product to the cart
 function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
     alert('Added to Cart');
     console.log('Product added to cart:', product);
+    console.log('Current cart:', cart);
 }
 
 // Function to add cart functionality
