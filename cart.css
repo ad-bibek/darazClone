@@ -3,10 +3,8 @@
     --primary-color: #f85606;
     --secondary-color: #888cf5;
     --white: #ffffff;
-    
 }
-/* General styles */
-/* General styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -176,6 +174,172 @@ main h2 {
 
 .remove-from-cart:hover {
     background-color: #c0392b;
+}
+.order-summary-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 300px; /* Adjust the width as needed */
+}
+
+.order-summary h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.order-summary .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-summary .voucher-code {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.order-summary .voucher-code input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.order-summary .voucher-code button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.order-summary .total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.order-summary .checkout-button {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Container for cart items */
+#cart-items {
+    margin: 20px 0;
+}
+
+/* Cart item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Cart item image */
+.cart-item-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+/* Cart item details */
+.cart-item-details {
+    flex-grow: 1;
+}
+
+/* Cart item title */
+.cart-item-details h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+}
+
+/* Cart item price */
+.cart-item-details p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Remove button */
+.remove-from-cart {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Order summary container */
+.order-summary-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Summary item */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* Voucher code input and button */
+.voucher-code {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.voucher-code input {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+}
+
+.voucher-code button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Total amount */
+.total {
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Checkout button */
+.checkout-button {
+    width: 100%;
+    background-color: #ff6c00;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
 }
 
 /* Footer styles */

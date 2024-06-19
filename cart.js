@@ -5,6 +5,7 @@ function loadCartItems() {
 
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        document.querySelector('.order-summary-container').style.display = 'none';
         return;
     }
 
@@ -41,7 +42,15 @@ function loadCartItems() {
         cartItem.appendChild(cartItemDetails);
 
         cartItemsContainer.appendChild(cartItem);
+
+        // Add click event to update order summary when an item is clicked
+        cartItem.addEventListener('click', () => {
+            updateOrderSummary();
+        });
     });
+
+    // Initially hide the order summary container
+    document.querySelector('.order-summary-container').style.display = 'none';
 }
 
 // Function to remove an item from the cart
@@ -50,7 +59,35 @@ function removeFromCart(index) {
     cart.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(cart));
     loadCartItems();
+    updateOrderSummary();
 }
 
-// Load cart items when the page loads
-document.addEventListener('DOMContentLoaded', loadCartItems);
+// Function to update the order summary
+function updateOrderSummary() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const subtotal = cart.reduce((sum, product) => sum + product.price, 0);
+    const itemCount = cart.length;
+    const shippingFee = 70;
+    const shippingDiscount = 0; // Default discount set to 0
+    const total = subtotal + shippingFee - shippingDiscount;
+
+    document.getElementById('item-count').textContent = itemCount;
+    document.getElementById('subtotal').textContent = subtotal;
+    document.getElementById('shipping-fee').textContent = shippingFee;
+    document.getElementById('shipping-discount').textContent = shippingDiscount;
+    document.getElementById('total').textContent = total;
+    document.getElementById('checkout-item-count').textContent = itemCount;
+
+    // Show or hide the order summary container based on the item count
+    if (itemCount > 0) {
+        document.querySelector('.order-summary-container').style.display = 'block';
+    } else {
+        document.querySelector('.order-summary-container').style.display = 'none';
+    }
+}
+
+// Call loadCartItems() and updateOrderSummary() when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    loadCartItems();
+    updateOrderSummary();
+});
