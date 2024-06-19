@@ -27,67 +27,91 @@ function loadCartItems() {
         cartItemTitle.textContent = product.title;
 
         const cartItemPrice = document.createElement('p');
-        cartItemPrice.textContent = `Rs. ${product.price}`;
+        cartItemPrice.textContent = 'Rs. ' + product.price.toFixed(2);
 
-        const removeButton = document.createElement('button');
-        removeButton.className = 'remove-from-cart';
-        removeButton.textContent = 'Remove';
-        removeButton.addEventListener('click', () => removeFromCart(index));
+        const cartItemQuantity = document.createElement('div');
+        cartItemQuantity.className = 'cart-item-quantity';
+        cartItemQuantity.innerHTML = `
+            <label for="quantity">Quantity</label>
+            <button class="decrease-quantity">-</button>
+            <input type="number" class="quantity-input" value="${product.quantity}" min="1">
+            <button class="increase-quantity">+</button>
+        `;
+
+        const removeFromCartButton = document.createElement('button');
+        removeFromCartButton.className = 'remove-from-cart';
+        removeFromCartButton.textContent = 'Remove';
+        removeFromCartButton.addEventListener('click', () => removeFromCart(index));
 
         cartItemDetails.appendChild(cartItemTitle);
         cartItemDetails.appendChild(cartItemPrice);
-        cartItemDetails.appendChild(removeButton);
-
+        cartItemDetails.appendChild(cartItemQuantity);
         cartItem.appendChild(cartItemImage);
         cartItem.appendChild(cartItemDetails);
+        cartItem.appendChild(removeFromCartButton);
 
         cartItemsContainer.appendChild(cartItem);
 
-        // Add click event to update order summary when an item is clicked
-        cartItem.addEventListener('click', () => {
-            updateOrderSummary();
+        // Add event listeners for quantity buttons
+        const decreaseButton = cartItemQuantity.querySelector('.decrease-quantity');
+        const increaseButton = cartItemQuantity.querySelector('.increase-quantity');
+        const quantityInput = cartItemQuantity.querySelector('.quantity-input');
+
+        decreaseButton.addEventListener('click', () => {
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                updateCartQuantity(index, parseInt(quantityInput.value));
+            }
+        });
+
+        increaseButton.addEventListener('click', () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            updateCartQuantity(index, parseInt(quantityInput.value));
+        });
+
+        quantityInput.addEventListener('change', () => {
+            const newQuantity = parseInt(quantityInput.value);
+            if (newQuantity >= 1) {
+                updateCartQuantity(index, newQuantity);
+            } else {
+                quantityInput.value = product.quantity;
+            }
         });
     });
 
-    // Initially hide the order summary container
-    document.querySelector('.order-summary-container').style.display = 'none';
+    updateOrderSummary();
 }
 
 // Function to remove an item from the cart
 function removeFromCart(index) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(cart));
     loadCartItems();
-    updateOrderSummary();
+}
+
+// Function to update the quantity of a product in the cart
+function updateCartQuantity(index, newQuantity) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart[index].quantity = newQuantity;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCartItems();
 }
 
 // Function to update the order summary
 function updateOrderSummary() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const subtotal = cart.reduce((sum, product) => sum + product.price, 0);
-    const itemCount = cart.length;
-    const shippingFee = 70;
-    const shippingDiscount = 0; // Default discount set to 0
-    const total = subtotal + shippingFee - shippingDiscount;
+    const subtotal = cart.reduce((total, product) => total + product.price * product.quantity, 0);
+    const shippingFee = 70; // Flat shipping fee
+    const shippingDiscount = 0; // Flat shipping discount
 
-    document.getElementById('item-count').textContent = itemCount;
-    document.getElementById('subtotal').textContent = subtotal;
-    document.getElementById('shipping-fee').textContent = shippingFee;
-    document.getElementById('shipping-discount').textContent = shippingDiscount;
-    document.getElementById('total').textContent = total;
-    document.getElementById('checkout-item-count').textContent = itemCount;
-
-    // Show or hide the order summary container based on the item count
-    if (itemCount > 0) {
-        document.querySelector('.order-summary-container').style.display = 'block';
-    } else {
-        document.querySelector('.order-summary-container').style.display = 'none';
-    }
+    document.getElementById('item-count').textContent = cart.length;
+    document.getElementById('subtotal').textContent = 'Rs. ' + subtotal.toFixed(2);
+    document.getElementById('shipping-fee').textContent = 'Rs. ' + shippingFee.toFixed(2);
+    document.getElementById('shipping-discount').textContent = '-Rs. ' + shippingDiscount.toFixed(2);
+    document.getElementById('total').textContent = 'Rs. ' + (subtotal + shippingFee - shippingDiscount).toFixed(2);
+    document.getElementById('checkout-item-count').textContent = cart.length;
 }
 
-// Call loadCartItems() and updateOrderSummary() when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    loadCartItems();
-    updateOrderSummary();
-});
+// Initial load
+loadCartItems();

@@ -69,7 +69,7 @@ function renderProductDetails(product) {
     quantity.innerHTML = `
         <label for="quantity">Quantity</label>
         <button id="decrease">-</button>
-        <input type="number" id="quantity" value="1">
+        <input type="number" id="quantity" value="1" min="1">
         <button id="increase">+</button>
     `;
 
@@ -90,6 +90,49 @@ function renderProductDetails(product) {
 
     productDetailsContainer.appendChild(imageContainer);
     productDetailsContainer.appendChild(infoContainer);
+
+    // Add event listeners for quantity buttons
+    const decreaseButton = document.getElementById('decrease');
+    const increaseButton = document.getElementById('increase');
+    const quantityInput = document.getElementById('quantity');
+
+    decreaseButton.addEventListener('click', () => {
+        if (quantityInput.value > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    });
+
+    increaseButton.addEventListener('click', () => {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+}
+
+// Function to add the product to the cart
+function addToCart(product, quantity) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProduct = cart.find(item => item.id === product.id);
+
+    if (existingProduct) {
+        existingProduct.quantity += quantity;
+    } else {
+        product.quantity = quantity;
+        cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Added to Cart');
+    console.log('Product added to cart:', product);
+    console.log('Current cart:', cart);
+}
+
+// Function to add cart functionality
+function addCartFunctionality(product) {
+    const addToCartButton = document.querySelector('.add-to-cart');
+    addToCartButton.addEventListener('click', () => {
+        const quantityInput = document.getElementById('quantity');
+        const quantity = parseInt(quantityInput.value);
+        addToCart(product, quantity);
+    });
 }
 
 function addZoomEffect() {
@@ -109,23 +152,5 @@ function addZoomEffect() {
     mainImage.addEventListener('mouseleave', () => {
         mainImage.style.transformOrigin = 'right left';
         mainImage.classList.remove('zoomed');
-    });
-}
-
-// Function to add the product to the cart
-function addToCart(product) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Added to Cart');
-    console.log('Product added to cart:', product);
-    console.log('Current cart:', cart);
-}
-
-// Function to add cart functionality
-function addCartFunctionality(product) {
-    const addToCartButton = document.querySelector('.add-to-cart');
-    addToCartButton.addEventListener('click', () => {
-        addToCart(product);
     });
 }
