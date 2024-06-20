@@ -108,7 +108,7 @@ function updateOrderSummary() {
     document.getElementById('item-count').textContent = cart.length;
     document.getElementById('subtotal').textContent = 'Rs. ' + subtotal.toFixed(2);
     document.getElementById('shipping-fee').textContent = 'Rs. ' + shippingFee.toFixed(2);
-    document.getElementById('shipping-discount').textContent = '-Rs. ' + shippingDiscount.toFixed(2);
+    document.getElementById('shipping-discount').textContent = 'Rs. ' + shippingDiscount.toFixed(2);
     document.getElementById('total').textContent = 'Rs. ' + (subtotal + shippingFee - shippingDiscount).toFixed(2);
     document.getElementById('checkout-item-count').textContent = cart.length;
 }
