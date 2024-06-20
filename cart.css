@@ -274,7 +274,7 @@ main {
 }
 
 .order-summary .checkout-button {
-    background-color: #e67e22;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 10px;
@@ -284,7 +284,6 @@ main {
     width: 100%;
 }
 
-/* Footer styles */
 footer {
     text-align: center;
     padding: 20px 0;
