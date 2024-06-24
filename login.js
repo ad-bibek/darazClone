@@ -1,40 +1,59 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    loginUser();
-});
-function loginUser() {
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    const loginMessage = document.getElementById('loginMessage');
+document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('loginForm');
 
-    if (!validateEmail(email) && !validatePhone(email)) {
-        loginMessage.textContent = 'Invalid email or phone number format.';
-        loginMessage.style.color = 'red';
-        return;
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
 
-    if (email === '' || password === '') {
-        loginMessage.textContent = 'Both fields are required.';
-        loginMessage.style.color = 'red';
-        return;
+    function validatePhoneNumber(phoneNumber) {
+        const phoneRegex = /^\d{10}$/;
+        return phoneRegex.test(phoneNumber);
     }
 
-    const storedUser = localStorage.getItem(email);
-    if (storedUser) {
-        const userData = JSON.parse(storedUser);
-        if (userData.password === password) {
-            loginMessage.textContent = 'Login successful! Redirecting to homepage...';
-            loginMessage.style.color = 'green';
-            
-            setTimeout(function() {
-                location.href = 'index.html';
-            }, 1500);
+    function validatePassword(password) {
+        return password.trim().length > 0;
+    }
+
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        loginUser();
+    });
+
+    function loginUser() {
+        const emailOrPhone = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+        const loginMessage = document.getElementById('loginMessage');
+
+        if (!validateEmail(emailOrPhone) && !validatePhoneNumber(emailOrPhone)) {
+            loginMessage.textContent = 'Invalid email or phone number format.';
+            loginMessage.style.color = 'red';
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            loginMessage.textContent = 'Password is required.';
+            loginMessage.style.color = 'red';
+            return;
+        }
+
+        const storedUserData = localStorage.getItem(emailOrPhone);
+        if (storedUserData) {
+            const userData = JSON.parse(storedUserData);
+            if (userData.password === password) {
+                loginMessage.textContent = 'Login successful! Redirecting to homepage...';
+                loginMessage.style.color = 'green';
+
+                setTimeout(function () {
+                    location.href = 'index.html';
+                }, 1500);
+            } else {
+                loginMessage.textContent = 'Incorrect password.';
+                loginMessage.style.color = 'red';
+            }
         } else {
-            loginMessage.textContent = 'Incorrect password.';
+            loginMessage.textContent = 'User not found. Please register.';
             loginMessage.style.color = 'red';
         }
-    } else {
-        loginMessage.textContent = 'User not found.';
-        loginMessage.style.color = 'red';
     }
-}
+});
