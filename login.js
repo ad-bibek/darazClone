@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (userData.password === password) {
                 loginMessage.textContent = 'Login successful! Redirecting to homepage...';
                 loginMessage.style.color = 'green';
+                localStorage.setItem('loggedInUser', emailOrPhone);
 
                 setTimeout(function () {
                     location.href = 'index.html';

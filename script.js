@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProducts(products) {
         const productGrid = document.getElementById('product-grid');
-        productGrid.innerHTML = ''; 
+        productGrid.innerHTML = '';
 
         products.forEach(product => {
             const productBox = document.createElement('div');
@@ -125,4 +125,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetchProducts();
+    autoSlide();
+
+    // Handle login/logout functionality
+    const loginLink = document.getElementById('loginLink');
+    const signupLink = document.getElementById('signupLink');
+    const logoutLink = document.getElementById('logoutLink');
+
+    const loggedInUser = localStorage.getItem('loggedInUser');
+
+    if (loggedInUser) {
+        // User is logged in, show logout button
+        logoutLink.style.display = 'block';
+        loginLink.style.display = 'none';
+        signupLink.style.display = 'none';
+
+        logoutLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            logoutUser();
+        });
+    }
 });
+
+function logoutUser() {
+    localStorage.removeItem('loggedInUser');
+    location.href = 'login.html';
+}
